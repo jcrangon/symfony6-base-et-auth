@@ -1,5 +1,46 @@
 controllers:
-    resource:
-        path: ../src/Controller/
-        namespace: App\Controller
-    type: attribute
+  resource:
+    path: ../src/Controller/
+    namespace: App\Controller
+  type: attribute
+
+# Front Office
+app_home: # Page Accueil
+  path: /
+  controller: App\Controller\HomeController::index
+
+# Back Office Admin
+app_admin:
+  path: /admin
+  controller: App\Controller\AdminController::index
+
+app_admin_member_management:
+  path: /admin/members
+  controller: App\Controller\AdminController::memberManagement
+
+# Back Office Member
+app_member:
+  path: member/profile
+  controller: App\Controller\MembreController::index
+# Login / Logout
+app_login:
+  path: /login
+  controller: App\Controller\SecurityController::login
+  methods: [GET, POST]
+
+app_logout:
+  path: /logout
+  methods: GET
+# Inscription
+app_register:
+  path: /register
+  controller: App\Controller\RegistrationController::register
+
+app_verify_email:
+  path: /verify/email
+  controller: App\Controller\RegistrationController::verifyUserEmail
+
+app_email_conf_sent:
+  path: /signup/confirmation
+  controller: App\Controller\RegistrationController::postSignUp
+# Stripe

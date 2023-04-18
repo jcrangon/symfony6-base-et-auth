@@ -1,19 +1,73 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
-        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('app') }}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        {% block javascripts %}
-            {{ encore_entry_script_tags('app') }}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+		<title>
+			{% block title %}{% endblock %}
+		</title>
+
+		{% block meta %}{% endblock %}
+
+		<link
+		rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>">
+
+		{# Material Icon API V2 #}
+		<link
+		href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		{# bootstrap v5.2.1 css #}
+		<link
+		href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+		{# jQueryUI 1.13.1 css #}
+		<link
+		rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/black-tie/jquery-ui.css">
+
+		{# block custom CSS #}
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		{# custom css #}
+		<link rel="stylesheet" href="{{ asset('assets/css/app.css') }}">
+
+	</head>
+	<body>
+		{# Inclusion de la barre de nav supérieure #}
+		{% include "template-parts/navbar.html.twig" %}
+
+		{# Block body #}
+		{% block header %}{% endblock %}
+
+		<main>
+			{# Block body #}
+			{% block body %}{% endblock %}
+		</main>
+
+		{# Inclusion du footer #}
+		{% include "template-parts/footer.html.twig" %}
+
+		{# Bootstrap #}
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+		{# jQuery #}
+		<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+		{# jQueryUI #}
+		<script src="https://code.jquery.com/ui/1.13.1/jquery-ui.min.js" integrity="sha256-eTyxS0rkjpLEo16uXTS0uVCS4815lc40K2iVpWDvdSY=" crossorigin="anonymous"></script>
+		{# block custom CSS #}
+		{% block javascripts %}
+			{{ encore_entry_script_tags('app') }}
+		{% endblock %}
+		{# custom JS #}
+		<script>
+			const jsData = {
+urls: {
+// exemple:
+// home: "{{ path('app_home',{'slug': 'home-url'})|escape('js') }}"
+
+}
+};
+		</script>
+		<script src="{{ asset('assets/js/app.js') }}"></script>
+	</body>
 </html>
