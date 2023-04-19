@@ -9,6 +9,8 @@ twig:
     ADMIN_PAGE: "admin"
     ADMIN_MEMBER_MANAGEMENT_PAGE: "member-management"
     MEMBER_PAGE: "member-space"
+    SIGN_UP: "signup"
+    POST_SIGN_UP: "email-confirmation"
 
 when@test:
   twig:
